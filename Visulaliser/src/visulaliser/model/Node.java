@@ -16,10 +16,11 @@ public class Node extends Component{
     private ArrayList<Person> mPeople;
     private int mRadius;
     
-    public Node(int x, int y, String name, String quality){
+    public Node(int x, int y, String name, String quality, int R){
         mX = x;
         mY = y;
         mName = name;
+        mRadius = R;
         mSignalQuality = quality;
     }
     
@@ -44,9 +45,10 @@ public class Node extends Component{
         return mSignalQuality;
     }
 
+    @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.fillOval(mX, mY, 4, 4);
+        g2d.drawOval(mX, mY, mRadius, mRadius);
     }
     
     public boolean contains(Person person) {

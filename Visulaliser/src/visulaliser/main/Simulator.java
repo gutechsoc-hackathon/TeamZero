@@ -1,12 +1,14 @@
 
 package visulaliser.main;
 
+import java.awt.Component;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import visulaliser.model.Node;
 import visulaliser.model.Person;
 
 
-public class Simulator {
+public class Simulator extends Component{
     private String mPath;
     private int mIterations;
     private ArrayList<Node> mNodes = new ArrayList<Node>();
@@ -15,12 +17,29 @@ public class Simulator {
     public Simulator(String path, int iterations){
         mPath = path;
         mIterations = iterations;
-        
-            
+        initialise();
     }
+
     public boolean initialise(){
-        
+        for(int i = 0; i < 10; i++){
+        Node a = new Node(20*i,20*i,""+i,""+i, 15);
+        mNodes.add(a);
+        }
+        for(int i = 0; i < 10; i++){
+        Person a = new Person();
+        mPeople.add(a);
+        }       
         return false;
+    }
+    
+    @Override
+    public void paint(Graphics g){
+        for(int i = 0; i < mNodes.size(); i++){
+            mNodes.get(i).paint(g);
+            }
+        for (int i = 0; i < mPeople.size(); i++ ){
+            mPeople.get(i).paint(g);
+        }
     }
     
     public void run(){
