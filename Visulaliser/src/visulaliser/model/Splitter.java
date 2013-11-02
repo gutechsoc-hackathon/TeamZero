@@ -73,9 +73,9 @@ public class Splitter
                 	min[0] = longX;
 
                 if (latY > max[1])
-                	max[1] = longX;
+                	max[1] = latY;
                 else if (latY < min[1])
-                	min[1] = longX;
+                	min[1] = latY;
                 
             }
             
