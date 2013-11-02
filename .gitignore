@@ -1,0 +1,13 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+Visulaliser\build\*
+Visulaliser\nbProject\*
+
+*.mf
+
+app\res\*
