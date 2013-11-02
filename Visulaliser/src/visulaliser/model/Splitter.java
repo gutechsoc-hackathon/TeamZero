@@ -57,7 +57,7 @@ public class Splitter
                 
                 try{
                 longX = (int) (Double.parseDouble(tokens[6]) * 1E6);
-                latY = (int) (Double.parseDouble(tokens[6]) * 1E6);
+                latY = (int) (Double.parseDouble(tokens[7]) * 1E6);
                 // String mNodeID=tokens[0];
                 mSignalQuality = Integer.parseInt(tokens[10]); 
                 }catch(NumberFormatException e){
