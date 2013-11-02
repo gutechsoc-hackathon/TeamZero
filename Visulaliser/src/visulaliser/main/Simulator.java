@@ -14,17 +14,17 @@ public class Simulator extends Component{
     private int mIterations;
     private ArrayList<Node> mNodes = new ArrayList<Node>();
     private ArrayList<Person> mPeople = new ArrayList<Person>();
-    
-    public Simulator(String path, int iterations){
+    private int nodes=0;
+    public Simulator(String path, int iterations,int nodes){
         mPath = path;
         mIterations = iterations;
-        initialise();
+        initialise(nodes);
     }
 
-    public boolean initialise(){
+    public boolean initialise(int nodes){
         Splitter newSplitter=new Splitter();
         try{
-        mNodes=newSplitter.networkParse(mPath);
+        mNodes=newSplitter.networkParse(mPath,nodes);
         }catch(Exception e){
         	return false;
         }

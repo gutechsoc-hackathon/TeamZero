@@ -14,7 +14,7 @@ public class Splitter
 	public Splitter(){
 		
 	}
-    public ArrayList<Node> networkParse(String filename) //returns an arraylist of nodes from file
+    public ArrayList<Node> networkParse(String filename,int lines) //returns an arraylist of nodes from "lines" number of lines from file
     {
         //Input file which needs to be parsed
         String fileToParse = "C:\\Users\\Walnutmonster\\Desktop\\hack (1)\\glasgowhack.csv"; //change this
@@ -35,8 +35,14 @@ public class Splitter
             int[] min = {Integer.MAX_VALUE, Integer.MAX_VALUE};
             
             //Read the file line by line
-            while ((line = fileReader.readLine()) != null) 
-            {
+            int lineCounter=0;
+            while (lineCounter<lines) 
+            {	
+            	//in case we try to read more lines than there are line is unreadable
+            
+            	line = fileReader.readLine();
+            	
+            	lineCounter+=1;
                 //Get all tokens available in line
                 String[] tokens = line.split(DELIMITER);
                 //Some data is not used for populating the node
