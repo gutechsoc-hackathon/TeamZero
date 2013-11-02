@@ -17,18 +17,18 @@ public class Person extends Component{
     private static Random randomGenerator = new Random();
     
     public Person(){
-    changePosition();
+        changePosition();
     }
     
     public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY){
-    ArrayList<Person> lis = new ArrayList<Person>();
-    mMaxX = MaxX;
-    mMaxY = MaxY;
-    for(int i = 0;i < noPeople; i++){
-        Person p = new Person();
-        lis.add(p);
-    }
-    return lis;
+        ArrayList<Person> lis = new ArrayList<Person>();
+        mMaxX = MaxX;
+        mMaxY = MaxY;
+        for(int i = 0;i < noPeople; i++){
+            Person p = new Person();
+            lis.add(p);
+        }
+        return lis;
     }
     
     public void changePosition(){
