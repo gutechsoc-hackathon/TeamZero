@@ -1,8 +1,6 @@
 package visulaliser.main;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import visulaliser.model.*;
 
 public class Visulaliser {

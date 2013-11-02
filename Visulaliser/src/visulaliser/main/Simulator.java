@@ -28,7 +28,9 @@ public class Simulator {
     }
     
     public void iterate(){
-        // change X and Y for all people 
+        for (int i = 0; i < mPeople.size(); i++){
+            mPeople.get(i).changePosition();            
+        }
         ArrayList<Person> tempPeople = mPeople;
         for(int i = 0; i < mNodes.size();i++) {
             Node node = mNodes.get(i);
