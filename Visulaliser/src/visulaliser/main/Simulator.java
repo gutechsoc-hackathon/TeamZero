@@ -17,18 +17,19 @@ public class Simulator extends Component{
     private int nodes=0;
     private int mHieght;
     private int mWidth;
-    public Simulator(String path, int iterations,int nodes, int people){
+    public Simulator(String path, int iterations,int nodecount, int people){
         mPath = path;
         mIterations = iterations;
         mWidth = Visulaliser.WIDTH;
         mHieght = Visulaliser.HIEGHT;
+        nodes = nodecount;
         initialise(nodes,people);
     }
 
-    public boolean initialise(int nodes,int people){
+    public boolean initialise(int nodecount,int people){
         Splitter newSplitter=new Splitter();
         try{
-        mNodes=newSplitter.networkParse(mPath,nodes);
+        mNodes=newSplitter.networkParse(mPath,nodecount);
         }catch(Exception e){
         	return false;
         }
