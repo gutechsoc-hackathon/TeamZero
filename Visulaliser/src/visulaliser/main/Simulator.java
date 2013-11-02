@@ -4,6 +4,7 @@ package visulaliser.main;
 import java.util.ArrayList;
 import visulaliser.model.Node;
 import visulaliser.model.Person;
+import visulaliser.model.Splitter;
 
 
 public class Simulator {
@@ -19,8 +20,13 @@ public class Simulator {
             
     }
     public boolean initialise(){
-        
-        return false;
+        Splitter newSplitter=new Splitter();
+        try{
+        mNodes=newSplitter.networkParse(mPath);
+        }catch(Exception e){
+        	return false;
+        }
+        return true;
     }
     
     public void run(){

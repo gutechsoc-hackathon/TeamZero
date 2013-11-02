@@ -47,13 +47,13 @@ public class Splitter
                
                 int longX;
                 int latY;
-                String mSignalQuality;
+                int mSignalQuality;
                 
                 try{
                 longX = (int) (Double.parseDouble(tokens[6]) * 1E6);
                 latY = (int) (Double.parseDouble(tokens[6]) * 1E6);
                 // String mNodeID=tokens[0];
-                mSignalQuality = tokens[10]; 
+                mSignalQuality = Integer.parseInt(tokens[10]); 
                 }catch(NumberFormatException e){
                 	continue;
                 }

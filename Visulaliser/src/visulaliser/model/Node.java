@@ -13,11 +13,11 @@ public class Node extends Component{
     private int mX;
     private String mName;
 
-    private String mSignalQuality;
+    private int mSignalQuality;
     private ArrayList<Person> mPeople;
     private int mRadius;
     
-    public Node(int x, int y, String name, String quality){
+    public Node(int x, int y, String name, int quality){
         mX = x;
         mY = y;
         mName = name;
@@ -50,7 +50,7 @@ public class Node extends Component{
         return mName;
     }
 
-    public String getSignalQuality() {
+    public int getSignalQuality() {
         return mSignalQuality;
     }
 
