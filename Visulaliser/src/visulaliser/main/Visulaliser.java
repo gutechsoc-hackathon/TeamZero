@@ -17,10 +17,10 @@ public class Visulaliser {
 	}
 	
 	public static void CreateAndShow() {
-		Node mNode = new Node(10, 10, "a", 0);
-		JFrame frame = new JFrame("visualiser");
+		Simulator sim = new Simulator("C:\\glasgowhack.csv",10);
+		JFrame frame = new JFrame("visulaliser");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(mNode);
+		frame.getContentPane().add(sim);
 		frame.pack();
 		frame.setVisible(true);
 	}

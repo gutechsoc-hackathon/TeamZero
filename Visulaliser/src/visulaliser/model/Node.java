@@ -24,7 +24,7 @@ public class Node extends Component{
         mY = y;
         mName = name;
         mSignalQuality = quality;
-        mRadius = 0;
+        mRadius = 10;
     }
     
     

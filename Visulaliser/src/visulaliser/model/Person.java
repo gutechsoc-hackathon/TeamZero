@@ -12,6 +12,8 @@ public class Person extends Component{
     private HashMap<String, Message> mMessages;
     private int mX;
     private int mY;
+    private int maxX;
+    private int maxY;
     private static Random randomGenerator = new Random();
     
     public Person(){
@@ -19,8 +21,8 @@ public class Person extends Component{
     }
     
     public void changePosition(){
-        mX = randomGenerator.nextInt(200);
-        mY = randomGenerator.nextInt(200);                       
+        mX = randomGenerator.nextInt(maxX);
+        mY = randomGenerator.nextInt(maxY);                       
     }
     
     public int getX(){

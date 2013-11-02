@@ -17,7 +17,7 @@ public class Splitter
     public ArrayList<Node> networkParse(String filename) //returns an arraylist of nodes from file
     {
         //Input file which needs to be parsed
-        String fileToParse = "C:\\Users\\Walnutmonster\\Desktop\\hack (1)\\glasgowhack.csv"; //change this
+        String fileToParse = filename; //change this
         BufferedReader fileReader = null;
          
         //Delimiter used in CSV file
