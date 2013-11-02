@@ -3,6 +3,7 @@ package visulaliser.model;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.HashMap;
 public class Node extends Component{
     
@@ -12,9 +13,14 @@ public class Node extends Component{
     int mX;
     private String mName;
     private String mSignalQuality;
+    private ArrayList<Person> mPeople;
+    private int mRadius;
     
-    public Node(double x, double y){
-        
+    public Node(int x, int y, String name, String quality){
+        mX = x;
+        mY = y;
+        mName = name;
+        mSignalQuality = quality;
     }
     
     
@@ -43,5 +49,17 @@ public class Node extends Component{
         g2d.fillOval(mX, mY, 4, 4);
     }
     
+    public boolean contains(Person person) {
+        if (Math.pow((person.getX() - mX),2) + Math.pow((person.getY() - mY),2) <= Math.pow(mRadius, 2) ){
+        return true;
+    }
+        return false;
+    }
+    public void add(Person p){
+        mPeople.add(p);
+    }
+    public void clearPeople() {
+        mPeople.clear();
+    }
     
 }
