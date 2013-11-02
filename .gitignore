@@ -5,9 +5,9 @@
 *.war
 *.ear
 
-Visulaliser\build\*
-Visulaliser\nbProject\*
+Visulaliser//build//
+Visulaliser//nbProject//
 
 *.mf
 
-app\res\*
+app//res//
