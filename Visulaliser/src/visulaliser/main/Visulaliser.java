@@ -6,6 +6,9 @@ import visulaliser.model.*;
 public class Visulaliser {
 public static final int WIDTH = 600;
 public static final int HIEGHT = 400;
+public static final int NODES = 10;
+public static final int PEOPLE = 10;
+public static final int ITERATIONS = 10;
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -18,7 +21,7 @@ public static final int HIEGHT = 400;
 	}
 	
 	public static void CreateAndShow() {
-		Simulator sim = new Simulator("glasgowhack.csv",10,10,10);
+		Simulator sim = new Simulator("glasgowhack.csv",ITERATIONS,NODES,PEOPLE);
                 sim.setHieght(HIEGHT);
                 sim.setWidth(WIDTH);
 		JFrame frame = new JFrame("visulaliser");
