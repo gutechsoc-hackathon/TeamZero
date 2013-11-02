@@ -57,7 +57,7 @@ public class Splitter
                 
                 try{
                 longX = (int) (Double.parseDouble(tokens[6]) * 1E6);
-                latY = (int) (Double.parseDouble(tokens[6]) * 1E6);
+                latY = (int) (Double.parseDouble(tokens[7]) * 1E6);
                 // String mNodeID=tokens[0];
                 mSignalQuality = Integer.parseInt(tokens[11]); 
                 }catch(NumberFormatException e){
@@ -73,9 +73,9 @@ public class Splitter
                 	min[0] = longX;
 
                 if (latY > max[1])
-                	max[1] = longX;
+                	max[1] = latY;
                 else if (latY < min[1])
-                	min[1] = longX;
+                	min[1] = latY;
                 
             }
             
@@ -143,7 +143,7 @@ public class Splitter
                     
                     try{
                     longX = (int) (Double.parseDouble(tokens[6]) * 1E6);
-                    latY = (int) (Double.parseDouble(tokens[6]) * 1E6);
+                    latY = (int) (Double.parseDouble(tokens[7]) * 1E6);
                     // String mNodeID=tokens[0];
                     mSignalQuality = Integer.parseInt(tokens[11]); 
                     }catch(NumberFormatException e){
@@ -159,9 +159,9 @@ public class Splitter
                     	min[0] = longX;
 
                     if (latY > max[1])
-                    	max[1] = longX;
+                    	max[1] = latY;
                     else if (latY < min[1])
-                    	min[1] = longX;
+                    	min[1] = latY;
                     
                 }
                 
