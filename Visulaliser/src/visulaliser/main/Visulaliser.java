@@ -17,7 +17,7 @@ public class Visulaliser {
 	}
 	
 	public static void CreateAndShow() {
-		Simulator sim = new Simulator("glasgowhack.csv",10);
+		Simulator sim = new Simulator("glasgowhack.csv",10,10);
 		JFrame frame = new JFrame("visulaliser");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(sim);
