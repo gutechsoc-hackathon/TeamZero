@@ -1,28 +1,32 @@
 package visulaliser.model;
 
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.HashMap;
-
-public class Node {
-
+public class Node extends Component{
+    
     private ID mNodeID;
     private HashMap<String, Message> mMessages;
-    double mY;
-    double mX;
+    int mY;
+    int mX;
     private String mName;
     private String mSignalQuality;
-
-    Node(double x, double y) {
+    
+    public Node(double x, double y){
+        
     }
-
+    
+    
     public ID getNodeID() {
         return mNodeID;
     }
 
-    public double getX() {
+    public int getX() {
         return mX;
     }
 
-    public double getY() {
+    public int getY() {
         return mY;
     }
 
@@ -33,4 +37,11 @@ public class Node {
     public String getSignalQuality() {
         return mSignalQuality;
     }
+
+    public void paint(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.fillOval(mX, mY, 4, 4);
+    }
+    
+    
 }
