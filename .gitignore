@@ -4,10 +4,8 @@
 *.jar
 *.war
 *.ear
-
+Visulaliser/build.xml
 Visulaliser/build/
 Visulaliser/nbProject/
 
 *.mf
-
-app//res//
