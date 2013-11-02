@@ -5,8 +5,8 @@
 *.war
 *.ear
 
-Visulaliser
-Visulaliser//nbProject//
+Visulaliser/build/
+Visulaliser/nbProject/
 
 *.mf
 
