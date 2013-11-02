@@ -5,6 +5,8 @@
 *.war
 *.ear
 Visulaliser/build.xml
+Visulaliser/.classpath
+Visulaliser/.project
 Visulaliser/build/
 Visulaliser/nbProject/
 
