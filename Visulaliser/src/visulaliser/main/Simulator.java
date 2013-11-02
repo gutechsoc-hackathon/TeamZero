@@ -15,22 +15,34 @@ public class Simulator extends Component{
     private ArrayList<Node> mNodes = new ArrayList<Node>();
     private ArrayList<Person> mPeople = new ArrayList<Person>();
     private int nodes=0;
-    public Simulator(String path, int iterations,int nodes){
+    private int mHieght;
+    private int mWidth;
+    public Simulator(String path, int iterations,int nodecount, int people){
         mPath = path;
         mIterations = iterations;
-        initialise(nodes);
+        mWidth = Visulaliser.WIDTH;
+        mHieght = Visulaliser.HIEGHT;
+        nodes = nodecount;
+        initialise(nodes,people);
     }
 
-    public boolean initialise(int nodes){
+    public boolean initialise(int nodecount,int people){
         Splitter newSplitter=new Splitter();
         try{
-        mNodes=newSplitter.networkParse(mPath,nodes);
+        mNodes=newSplitter.networkParse(mPath,nodecount);
         }catch(Exception e){
         	return false;
         }
+        mPeople = Person.personGen(people, mWidth, mHieght);
         return true;
     }
     
+    public void setHieght(int h){
+    mHieght = h;
+    }
+    public void setWidth(int w){
+    mWidth = w;
+    }
     @Override
     public void paint(Graphics g){
         for(int i = 0; i < mNodes.size(); i++){

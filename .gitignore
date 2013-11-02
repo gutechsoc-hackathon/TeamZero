@@ -11,3 +11,7 @@ Visulaliser/build/
 Visulaliser/nbProject/
 
 *.mf
+app/.project
+app/project.properties
+app/bin/
+app/gen/
