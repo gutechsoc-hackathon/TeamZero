@@ -6,7 +6,7 @@ import visulaliser.model.*;
 public class Visulaliser {
 public static final int WIDTH = 600;
 public static final int HIEGHT = 400;
-public static final int NODES = 10;
+public static final int NODES = 72670;
 public static final int PEOPLE = 10;
 public static final int ITERATIONS = 10;
 	public static void main(String[] args) {
