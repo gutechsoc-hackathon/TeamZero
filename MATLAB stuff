@@ -1,0 +1,60 @@
+for i=1:65538
+    
+    lat=latitude(i);
+    long=longitude(i);
+    
+   if lat<60
+       if lat>50
+            if long>-5
+                if long<-3
+        scatter(long,lat);
+        hold on
+
+                end
+            end
+       end
+   end
+end
+
+hold on 
+
+for i=1:65538
+    for j=1:65538
+ 
+    alat = latitude(i);
+    along = longitude(i);
+    
+    blat = latitude(j);
+    blong = longitude(j);
+    
+    if alat<60
+       if alat>50
+            if along>-5
+                if along<-3
+                    if blat<60
+                        if blat>50
+                            if blong>-5
+                                if blong<-3
+    
+    d=6371000*acos(sin(alat)*sin(blat)+cos(alat)*cos(blat)*cos(abs(along-blong)));
+    
+    if d<10000
+    plot([along blong], [alat blat])
+    hold on
+    end                     
+    
+                                end 
+                            end
+                        end
+                    end
+                end
+            end
+       end
+   end
+    
+    
+    
+    
+   end
+end
+            

@@ -17,7 +17,7 @@ public class Splitter
     public ArrayList<Node> networkParse(String filename) //returns an arraylist of nodes from file
     {
         //Input file which needs to be parsed
-        String fileToParse = "C:\\Users\\Walnutmonster\\Desktop\\hack (1)\\glasgowhack.csv";
+        String fileToParse = "C:\\Users\\Walnutmonster\\Desktop\\hack (1)\\glasgowhack.csv"; //change this
         BufferedReader fileReader = null;
          
         //Delimiter used in CSV file
@@ -47,13 +47,13 @@ public class Splitter
                
                 int longX;
                 int latY;
-                int mSignalQuality;
+                String mSignalQuality;
                 
                 try{
                 longX = (int) (Double.parseDouble(tokens[6]) * 1E6);
                 latY = (int) (Double.parseDouble(tokens[6]) * 1E6);
                 // String mNodeID=tokens[0];
-                mSignalQuality = Integer.parseInt(tokens[10]); 
+                mSignalQuality = tokens[10]; 
                 }catch(NumberFormatException e){
                 	continue;
                 }
