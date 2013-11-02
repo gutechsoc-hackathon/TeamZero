@@ -17,6 +17,7 @@ public class Person extends Component{
     private static Random randomGenerator = new Random();
     
     public Person(){
+        mID = ID.generateID();
         changePosition();
     }
     

@@ -19,7 +19,7 @@ public class Node extends Component{
     
 
     public Node(int x, int y, String name, int quality){
-
+        mNodeID = ID.generateID();
         mX = x;
         mY = y;
         mName = name;
