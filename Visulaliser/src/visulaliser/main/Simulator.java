@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import visulaliser.model.Node;
 import visulaliser.model.Person;
+import visulaliser.model.Splitter;
 
 
 public class Simulator extends Component{
@@ -21,15 +22,13 @@ public class Simulator extends Component{
     }
 
     public boolean initialise(){
-        for(int i = 0; i < 10; i++){
-        Node a = new Node(20*i,20*i,""+i,""+i, 15);
-        mNodes.add(a);
+        Splitter newSplitter=new Splitter();
+        try{
+        mNodes=newSplitter.networkParse(mPath);
+        }catch(Exception e){
+        	return false;
         }
-        for(int i = 0; i < 10; i++){
-        Person a = new Person();
-        mPeople.add(a);
-        }       
-        return false;
+        return true;
     }
     
     @Override

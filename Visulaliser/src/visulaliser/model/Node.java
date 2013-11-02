@@ -9,19 +9,22 @@ public class Node extends Component{
     
     private ID mNodeID;
     private HashMap<String, Message> mMessages;
-    int mY;
-    int mX;
+    private int mY;
+    private int mX;
     private String mName;
-    private String mSignalQuality;
+
+    private int mSignalQuality;
     private ArrayList<Person> mPeople;
     private int mRadius;
     
-    public Node(int x, int y, String name, String quality, int R){
+
+    public Node(int x, int y, String name, int quality){
+
         mX = x;
         mY = y;
         mName = name;
-        mRadius = R;
         mSignalQuality = quality;
+        mRadius = 0;
     }
     
     
@@ -32,16 +35,24 @@ public class Node extends Component{
     public int getX() {
         return mX;
     }
+    
+    public void setX(int x) {
+    	mX = x;
+    }
 
     public int getY() {
         return mY;
+    }
+    
+    public void setY(int y) {
+    	mY = y;
     }
 
     public String getName() {
         return mName;
     }
 
-    public String getSignalQuality() {
+    public int getSignalQuality() {
         return mSignalQuality;
     }
 
@@ -49,6 +60,13 @@ public class Node extends Component{
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawOval(mX, mY, mRadius, mRadius);
+    }
+    //@override
+    
+    public String toString(){
+    	String s="";
+    	s+="ID: "+"something goes here"+", SigQual: "+mSignalQuality+", Name: "+mName.toString();
+    	return s;
     }
     
     public boolean contains(Person person) {
