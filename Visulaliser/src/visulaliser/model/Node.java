@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Node extends Component{
     
     private ID mNodeID;
-    private HashMap<String, Message> mMessages;
+    private HashMap<ID, Message> mMessages;
     private int mY;
     private int mX;
     private String mName;
