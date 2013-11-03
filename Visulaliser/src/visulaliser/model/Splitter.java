@@ -103,7 +103,7 @@ public class Splitter
             for(i=0;i<mNetwork.size();i++){
             	Node node = mNetwork.get(i);
             	node.setX(node.getX() - min[0]);
-            	node.setY(node.getY() - min[1]);
+            	node.setY(max[1]-node.getY());
             	node.setRadius((int)((float) node.getRadius()*((float)node.getSignalQuality()/(float)(maxSig-minSig)))); //improve speed 
             }
             setXrange(max[0]-min[0]);
