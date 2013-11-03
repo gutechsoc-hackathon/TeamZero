@@ -25,15 +25,10 @@ public class Person extends Component{
     public Person(ArrayList<Node> nodes){
         mID = ID.generateID();
         int nodeNo = randomGenerator.nextInt(nodes.size());
-<<<<<<< HEAD
-        mX =(int) ((int)  nodes.get(nodeNo).getX()  + (-200 + randomGenerator.nextInt(400))*randomGenerator.nextDouble());
-        mY = (int) ((int) nodes.get(nodeNo).getY() + (-200 + randomGenerator.nextInt(400))*randomGenerator.nextDouble());
-=======
         mX =(int) ((int)  nodes.get(nodeNo).getX()  + (-20 + randomGenerator.nextInt(40))*randomGenerator.nextDouble());
         mY = (int) ((int) nodes.get(nodeNo).getY() + (-20 + randomGenerator.nextInt(40))*randomGenerator.nextDouble());
         mXSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
         mYSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
->>>>>>> 0c599fe1d307eba0605cb8a3737c5ada83e4b5cd
     }
     
     public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages, ArrayList<Node> nodes){
