@@ -55,14 +55,11 @@ public class Node extends Component{
         return mName;
     }
     
-    public ArrayList getPeople(){
-<<<<<<< HEAD
-return mPeople;}
+    public ArrayList<Person> getPeople(){
+        return mPeople;
+    }
     public int getRadius(){
     	return this.mRadius;
-=======
-    	return mPeople;
->>>>>>> f5b3cbd8d4a108f1f5e6e25fc0d1a39055845c78
     }
     
     public HashMap<ID, Message> getMessages(){
