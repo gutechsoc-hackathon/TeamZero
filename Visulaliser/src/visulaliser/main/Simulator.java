@@ -6,48 +6,61 @@ import java.awt.Graphics;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.ArrayList;
-import visulaliser.model.Message;
+
 import visulaliser.model.Node;
 import visulaliser.model.Person;
 import visulaliser.model.Splitter;
 
 
 public class Simulator extends Component implements ComponentListener{
-    private String mPath;
+	private static final long serialVersionUID = 1L;
+	
+	private String mPath;
     private int mIterations;
     private ArrayList<Node> mNodes = new ArrayList<Node>();
     private ArrayList<Person> mPeople = new ArrayList<Person>();
-    private int nodes=0;
+    private int mNodeCount=0;
+    private int mPersonCount=0;
+    private int mMessageCount=0;
     private int mxRange;
     private int myRange;
-    private int mHieght;
-    private int mWIdth;
     
     public Simulator(String path, int iterations,int nodecount, int people, int noMessages){
         mPath = path;
         mIterations = iterations;
-        nodes = nodecount;
+        mNodeCount = nodecount;
+        mPersonCount = people;
+        mMessageCount = noMessages;
         addComponentListener(this);
-        initialise(nodes,people,noMessages);
     }
 
-    public boolean initialise(int nodecount,int people, int noMessages){
+    public boolean initialise(){
         Splitter newSplitter=new Splitter();
         try{
-        mNodes=newSplitter.networkParse(mPath,nodecount);
+        mNodes=newSplitter.networkParse(mPath,mNodeCount);
         mxRange=newSplitter.getXrange();
         myRange=newSplitter.getYrange();
         }catch(Exception e){
         	return false;
         }
-        mPeople = Person.personGen(people, mxRange, myRange, noMessages);
+        mPeople = Person.personGen(mPersonCount, mxRange, myRange, mMessageCount, mNodes);
         return true;
     }
     
     @Override
+    public void update(Graphics g) {
+    	super.update(g);
+    	System.out.println("Update");
+    }
+    
+    @Override
     public void paint(Graphics g){
+    	super.paint(g);
+    	System.out.println("paint");
     	int ownWidth = getWidth();
     	int ownHeight=getHeight();
+    	
+    	g.clearRect(0, 0, ownWidth, ownHeight);
     	
     	float scale = 1.0f;
     	if(ownWidth<=ownHeight){
@@ -72,10 +85,18 @@ public class Simulator extends Component implements ComponentListener{
     }
     
     public void run(){
-        
+        for (int i = 0; i < mIterations; ++i) {
+        	iterate();
+        	try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+        }
     }
     
     public void iterate() {
+    	System.out.println("Iterating...");
     	for (int i = 0; i < mPeople.size(); i++){
     		mPeople.get(i).changePosition();            
     	}
@@ -85,8 +106,8 @@ public class Simulator extends Component implements ComponentListener{
     		Node node = mNodes.get(i);
     		node.clearPeople();
 
-    		for (int u = tempPeople.size(); u >= 0; u--) {
-    			Person person = tempPeople.get(i);
+    		for (int u = tempPeople.size() - 1; u >= 0; u--) {
+    			Person person = tempPeople.get(u);
     			if (node.contains(person)){
                                 node.checkPersonMessages(person);
                                 person.checkNodeMessages(node);
@@ -96,6 +117,10 @@ public class Simulator extends Component implements ComponentListener{
     		}
         
     	}
+    	
+//    	this.invalidate();
+//    	this.repaint();
+    	paint(getGraphics());
     }
 
 
@@ -114,7 +139,6 @@ public class Simulator extends Component implements ComponentListener{
 	@Override
 	public void componentResized(ComponentEvent arg0) {
 		this.invalidate();
-		
 	}
 
 	@Override

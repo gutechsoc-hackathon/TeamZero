@@ -16,4 +16,7 @@ public class Message {
     public ID getID(){
     return mMessageID;
     }
+    public ID getTo(){
+    return mToID;
+    }
 }
