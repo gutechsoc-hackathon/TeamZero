@@ -26,7 +26,7 @@ public class Simulator extends Component implements ComponentListener{
     private int mxRange;
     private int myRange;
     
-    private Painter mPainter = new PaintNodeMessages();
+    private Painter mPainter = new PaintBothMessages();
     
     public Simulator(String path, int iterations,int nodecount, int people, int noMessages){
         mPath = path;
