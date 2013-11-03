@@ -29,18 +29,15 @@ public class Person extends Component{
             Person p = new Person();
             people.add(p);
         }
-        int person1;
-        int person2;
-		for (int i = 0; i < messageCount; i++) {
-	        person1 = randomGenerator.nextInt(numberOfPeople);
-	        person2 = randomGenerator.nextInt(numberOfPeople);
-			
-			Person pers1 = people.get(person1);
-			Person pers2 = people.get(person2);
-			Message mess1 = new Message(pers1.mID, pers2.mID);
-			pers1.mMessages.put(mess1.getID(), mess1);
-		}
-        return people;
+
+        int pers1no = randomGenerator.nextInt(noPeople);
+        int pers2no = randomGenerator.nextInt(noPeople);
+        for(int i = 0; i < noMessages; i++){
+        Person pers1 = lis.get(pers1no);
+        Person pers2 = lis.get(pers2no);
+        Message mess1 = new Message(pers1.mID,pers2.mID);
+        lis.get(pers1no).mMessages.put(mess1.getID(), mess1);}
+        return lis;
     }
     
     public void changePosition(){
