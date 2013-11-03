@@ -55,6 +55,9 @@ public class Node extends Component{
     
     public ArrayList getPeople(){
 return mPeople;}
+    public int getRadius(){
+    	return this.mRadius;
+    }
     
     public HashMap<ID, Message> getMessages(){
     return mMessages;
@@ -74,6 +77,9 @@ return mPeople;}
     }
     public void setScale(float scale){
     	mScale=scale;
+    }
+    public void setRadius(int radius){
+    	mRadius=radius;
     }
 
     @Override

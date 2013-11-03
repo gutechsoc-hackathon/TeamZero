@@ -14,6 +14,7 @@ public class Splitter
 	//constructor
 	int xRange;
 	int yRange;
+	int rRange; //range of R values
 	
 	public Splitter(){
 		
@@ -38,6 +39,8 @@ public class Splitter
             
             int[] max = {Integer.MIN_VALUE, Integer.MIN_VALUE};
             int[] min = {Integer.MAX_VALUE, Integer.MAX_VALUE};
+            int maxSig = Integer.MIN_VALUE;
+            int minSig = Integer.MAX_VALUE;
             
             //Read the file line by line
             int lineCounter=0;
@@ -87,6 +90,10 @@ public class Splitter
                 else if (latY < min[1])
                 	min[1] = latY;
                 
+                if (mSignalQuality > maxSig)
+                	maxSig = mSignalQuality;
+                else if(mSignalQuality< minSig)
+                	minSig = mSignalQuality;
             }
             
             //augmentation of coordinates
@@ -95,9 +102,11 @@ public class Splitter
             	Node node = mNetwork.get(i);
             	node.setX(node.getX() - min[0]);
             	node.setY(node.getY() - min[1]);
+            	node.setRadius((int)((float) node.getRadius()*((float)node.getSignalQuality()/(float)(maxSig-minSig)))); //improve speed 
             }
             setXrange(max[0]-min[0]);
             setYrange(max[1]-min[1]);
+            setRrange(maxSig-minSig);
             
         } 
         catch (Exception e) {
@@ -121,6 +130,9 @@ public class Splitter
     public void setYrange(int range){
     	this.yRange=range;
     	
+    }
+    public void setRrange(int range){
+    	rRange=range;
     }
     public int getXrange(){
     	return this.xRange;
@@ -148,6 +160,8 @@ public class Splitter
                 
                 int[] max = {Integer.MIN_VALUE, Integer.MIN_VALUE};
                 int[] min = {Integer.MAX_VALUE, Integer.MAX_VALUE};
+                int maxSig = Integer.MIN_VALUE;
+                int minSig = Integer.MAX_VALUE;
                 
                 //Read the file line by line
                 while ((line = fileReader.readLine())!=null) 
@@ -168,13 +182,19 @@ public class Splitter
                     int mSignalQuality;
                     
                     try{
-                    longX = (int) (Double.parseDouble(tokens[6]) * 1E6);
-                    latY = (int) (Double.parseDouble(tokens[7]) * 1E6);
-                    // String mNodeID=tokens[0];
-                    mSignalQuality = Integer.parseInt(tokens[11]); 
-                    }catch(NumberFormatException e){
-                    	continue;
-                    }
+                        double longitude = Double.parseDouble(tokens[7]);
+                        double latitude = Double.parseDouble(tokens[6]);
+                        
+                        LatLng latLng = new LatLng(latitude, longitude);
+                        UTMRef utm = latLng.toUTMRef();
+                        longX = (int) utm.getEasting();
+                        latY = (int) utm.getNorthing();
+                        // String mNodeID=tokens[0];
+                        mSignalQuality = Integer.parseInt(tokens[11]); 
+                        }catch(NumberFormatException e){
+                        	continue;
+                        }
+                    
                     String mName=tokens[3];   //ssid
                                    
                     Node mNewNode= new Node(longX, latY, mName, mSignalQuality);
@@ -189,7 +209,12 @@ public class Splitter
                     else if (latY < min[1])
                     	min[1] = latY;
                     
+                    if (mSignalQuality > maxSig)
+                    	maxSig = mSignalQuality;
+                    else if(mSignalQuality< minSig)
+                    	minSig = mSignalQuality;
                 }
+                
                 
                 //augmentation of coordinates
                 int i;
@@ -197,7 +222,12 @@ public class Splitter
                 	Node node = mNetwork.get(i);
                 	node.setX(node.getX() - min[0]);
                 	node.setY(node.getY() - min[1]);
+                	node.setRadius((int)((float) node.getRadius()*((float)node.getSignalQuality()/(float)(maxSig-minSig)))); //improve speed 
                 }
+                setXrange(max[0]-min[0]);
+                setYrange(max[1]-min[1]);
+                setRrange(maxSig-minSig);
+                
                 
             } 
             catch (Exception e) {
