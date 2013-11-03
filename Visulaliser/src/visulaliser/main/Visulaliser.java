@@ -36,6 +36,6 @@ public class Visulaliser {
 		frame.setVisible(true);
 		
 		sim.initialise();
-		//sim.run();
+		sim.run();
 	}
 }
