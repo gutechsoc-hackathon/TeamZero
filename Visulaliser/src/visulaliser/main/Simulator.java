@@ -43,6 +43,7 @@ public class Simulator extends Component implements ComponentListener{
         mPeople = Person.personGen(people, mxRange, myRange, noMessages);
         return true;
     }
+    
     @Override
     public void paint(Graphics g){
     	int ownWidth = getWidth();
