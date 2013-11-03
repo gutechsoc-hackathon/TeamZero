@@ -40,10 +40,13 @@ public class Simulator extends Component implements ComponentListener{
         }catch(Exception e){
         	return false;
         }
-        mPeople = Person.personGen(people, mxRange, myRange, noMessages);
+        mPeople = Person.personGen(people, mxRange, myRange, noMessages, mNodes);
         return true;
     }
     
+    public void setHieght(int h){
+    myRange = h;
+    }
     @Override
     public void paint(Graphics g){
     	int ownWidth = getWidth();

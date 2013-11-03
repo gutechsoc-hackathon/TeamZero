@@ -17,17 +17,19 @@ public class Person extends Component{
     private static int mMaxY;
     private static Random randomGenerator = new Random();
     private float mScale=1.0f;
-    public Person(){
+    public Person(ArrayList<Node> nodes){
         mID = ID.generateID();
-        changePosition();
+        int nodeNo = randomGenerator.nextInt(nodes.size());
+        mX =(int) ((int)  nodes.get(nodeNo).getX()  + (-20 + randomGenerator.nextInt(40))*randomGenerator.nextDouble());
+        mY = (int) ((int) nodes.get(nodeNo).getY() + (-20 + randomGenerator.nextInt(40))*randomGenerator.nextDouble());
     }
     
-    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages){
+    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages, ArrayList<Node> nodes){
         ArrayList<Person> people = new ArrayList<Person>();
         mMaxX = MaxX;
         mMaxY = MaxY;
         for(int i = 0;i < noPeople; i++){
-            Person p = new Person();
+            Person p = new Person(nodes);
             people.add(p);
         }
         ArrayList<Message> lis = new ArrayList();
