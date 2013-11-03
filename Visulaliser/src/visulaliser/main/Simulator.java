@@ -17,23 +17,23 @@ public class Simulator extends Component{
     private int nodes=0;
     private int mHieght;
     private int mWidth;
-    public Simulator(String path, int iterations,int nodecount, int people){
+    public Simulator(String path, int iterations,int nodecount, int people, int noMessages){
         mPath = path;
         mIterations = iterations;
         mWidth = Visulaliser.WIDTH;
         mHieght = Visulaliser.HIEGHT;
         nodes = nodecount;
-        initialise(nodes,people);
+        initialise(nodes,people,noMessages);
     }
 
-    public boolean initialise(int nodecount,int people){
+    public boolean initialise(int nodecount,int people, int noMessages){
         Splitter newSplitter=new Splitter();
         try{
         mNodes=newSplitter.networkParse(mPath,nodecount);
         }catch(Exception e){
         	return false;
         }
-        mPeople = Person.personGen(people, mWidth, mHieght);
+        mPeople = Person.personGen(people, mWidth, mHieght, noMessages);
         return true;
     }
     

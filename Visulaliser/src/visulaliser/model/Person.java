@@ -21,7 +21,7 @@ public class Person extends Component{
         changePosition();
     }
     
-    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY){
+    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages){
         ArrayList<Person> lis = new ArrayList<Person>();
         mMaxX = MaxX;
         mMaxY = MaxY;
@@ -31,10 +31,11 @@ public class Person extends Component{
         }
         int pers1no = randomGenerator.nextInt(noPeople);
         int pers2no = randomGenerator.nextInt(noPeople);
+        for(int i = 0; i < noMessages; i++){
         Person pers1 = lis.get(pers1no);
         Person pers2 = lis.get(pers2no);
         Message mess1 = new Message(pers1.mID,pers2.mID);
-        lis.get(pers1no).mMessages.put(mess1.mMessageID, mess1);
+        lis.get(pers1no).mMessages.put(mess1.getID(), mess1);}
         return lis;
     }
     
