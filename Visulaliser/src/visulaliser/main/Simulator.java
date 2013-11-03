@@ -18,16 +18,14 @@ public class Simulator extends Component implements ComponentListener{
     private ArrayList<Node> mNodes = new ArrayList<Node>();
     private ArrayList<Person> mPeople = new ArrayList<Person>();
     private int nodes=0;
-    private int mHieght;
-    private int mWidth;
     private int mxRange;
     private int myRange;
+    private int mHieght;
+    private int mWIdth;
     
     public Simulator(String path, int iterations,int nodecount, int people, int noMessages){
         mPath = path;
         mIterations = iterations;
-        mWidth = Visulaliser.WIDTH;
-        mHieght = Visulaliser.HIEGHT;
         nodes = nodecount;
         addComponentListener(this);
         initialise(nodes,people,noMessages);
@@ -42,15 +40,8 @@ public class Simulator extends Component implements ComponentListener{
         }catch(Exception e){
         	return false;
         }
-        mPeople = Person.personGen(people, mWidth, mHieght, noMessages);
+        mPeople = Person.personGen(people, mxRange, myRange, noMessages);
         return true;
-    }
-    
-    public void setHieght(int h){
-    mHieght = h;
-    }
-    public void setWidth(int w){
-    mWidth = w;
     }
     @Override
     public void paint(Graphics g){

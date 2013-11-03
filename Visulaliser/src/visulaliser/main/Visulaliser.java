@@ -23,8 +23,6 @@ public static final int MESSAGES = 10;
 	
 	public static void CreateAndShow() {
 		Simulator sim = new Simulator("glasgowhack.csv",ITERATIONS,NODES,PEOPLE, MESSAGES);
-                sim.setHieght(HIEGHT);
-                sim.setWidth(WIDTH);
 		JFrame frame = new JFrame("visulaliser");
                 frame.setSize(WIDTH, HIEGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
