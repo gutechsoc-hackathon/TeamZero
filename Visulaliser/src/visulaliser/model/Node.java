@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+
+import visulaliser.model.painter.Painter;
 public class Node extends Component{
     
     private ID mNodeID;
@@ -19,7 +21,9 @@ public class Node extends Component{
     private int mRadius;
     private float mScale=1.0f;
 
-    public Node(int x, int y, String name, int quality){
+    private final Painter mPainter;
+
+    public Node(int x, int y, String name, int quality, Painter painter){
         mNodeID = ID.generateID();
         mX = x;
         mY = y;
@@ -28,6 +32,7 @@ public class Node extends Component{
         mRadius = 4;
         mMessages = new HashMap<ID, Message>();
         mPeople = new ArrayList<Person>();
+        mPainter = painter;
     }
     
     
@@ -58,9 +63,6 @@ public class Node extends Component{
     public ArrayList<Person> getPeople(){
         return mPeople;
     }
-    public int getRadius(){
-    	return this.mRadius;
-    }
     
     public HashMap<ID, Message> getMessages(){
     	return mMessages;
@@ -82,18 +84,24 @@ public class Node extends Component{
     public void setScale(float scale){
     	mScale=scale;
     }
+    
+    public float getScale() {
+    	return mScale;
+	}
+
+
+	public int getRadius(){
+		return this.mRadius;
+	}
+
     public void setRadius(int radius){
     	mRadius=radius;
     }
-
+    
     @Override
     public void paint(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        int x= (int) (mX*mScale);
-        int y= (int) (mY*mScale);
-        g2d.drawOval(x, y, mRadius, mRadius);
+        mPainter.paintNode(g, this);
     }
-    //@override
     
     public String toString(){
     	String s="";

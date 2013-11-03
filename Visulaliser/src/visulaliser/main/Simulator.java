@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import visulaliser.model.Node;
 import visulaliser.model.Person;
 import visulaliser.model.Splitter;
+import visulaliser.model.painter.BasicPainter;
+import visulaliser.model.painter.Painter;
 
 
 public class Simulator extends Component implements ComponentListener{
@@ -25,6 +27,8 @@ public class Simulator extends Component implements ComponentListener{
     private int mxRange;
     private int myRange;
     
+    private Painter mPainter = new BasicPainter();
+    
     public Simulator(String path, int iterations,int nodecount, int people, int noMessages){
         mPath = path;
         mIterations = iterations;
@@ -33,17 +37,23 @@ public class Simulator extends Component implements ComponentListener{
         mMessageCount = noMessages;
         addComponentListener(this);
     }
+    
+    public void setPainter(Painter painter) {
+    	if (painter != null)
+    		mPainter = painter;
+    }
 
     public boolean initialise(){
-        Splitter newSplitter=new Splitter();
+        Splitter newSplitter = new Splitter(mPainter);
         try{
-        mNodes=newSplitter.networkParse(mPath,mNodeCount);
-        mxRange=newSplitter.getXrange();
-        myRange=newSplitter.getYrange();
+	        mNodes=newSplitter.networkParse(mPath,mNodeCount);
+	        mxRange=newSplitter.getXrange();
+	        myRange=newSplitter.getYrange();
         }catch(Exception e){
         	return false;
         }
-        mPeople = Person.personGen(mPersonCount, mxRange, myRange, mMessageCount, mNodes);
+        
+        mPeople = Person.personGen(mPersonCount, mxRange, myRange, mMessageCount, mNodes, mPainter);
         return true;
     }
     

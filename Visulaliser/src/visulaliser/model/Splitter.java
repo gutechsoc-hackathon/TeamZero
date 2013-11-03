@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import uk.me.jstott.jcoord.LatLng;
 import uk.me.jstott.jcoord.UTMRef;
+import visulaliser.model.painter.BasicPainter;
+import visulaliser.model.painter.Painter;
 
 public class Splitter
 {
@@ -16,8 +18,12 @@ public class Splitter
 	int yRange;
 	int rRange; //range of R values
 	
-	public Splitter(){
-		
+	Painter mPainter = new BasicPainter();
+	
+	public Splitter() { }
+	
+	public Splitter(Painter painter){
+		mPainter = painter;
 				
 	}
     public ArrayList<Node> networkParse(String filename,int lines) //returns an arraylist of nodes from "lines" number of lines from file
@@ -49,6 +55,8 @@ public class Splitter
             	//in case we try to read more lines than there are line is unreadable
             
             	line = fileReader.readLine();
+            	if (line == null)
+            		break;
             	
             	lineCounter+=1;
                 //Get all tokens available in line
@@ -78,7 +86,7 @@ public class Splitter
                 }
                 String mName=tokens[3];   //ssid
                                
-                Node mNewNode= new Node(longX, latY, mName, mSignalQuality);
+                Node mNewNode= new Node(longX, latY, mName, mSignalQuality, mPainter);
                 mNetwork.add(mNewNode);
                 if (longX > max[0])
                 	max[0] = longX;
@@ -197,7 +205,7 @@ public class Splitter
                     
                     String mName=tokens[3];   //ssid
                                    
-                    Node mNewNode= new Node(longX, latY, mName, mSignalQuality);
+                    Node mNewNode= new Node(longX, latY, mName, mSignalQuality, mPainter);
                     mNetwork.add(mNewNode);
                     if (longX > max[0])
                     	max[0] = longX;

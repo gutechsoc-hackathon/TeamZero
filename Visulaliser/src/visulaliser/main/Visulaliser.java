@@ -27,7 +27,7 @@ public class Visulaliser {
 	}
 	
 	public static void CreateAndShow() {
-		Simulator sim = new Simulator("glasgowhack.csv",ITERATIONS,NODES,PEOPLE, MESSAGES);
+		Simulator sim = new Simulator("subset.txt",ITERATIONS,NODES,PEOPLE, MESSAGES);
         
 		JFrame frame = new JFrame("Visulaliser");
 		frame.setSize(WIDTH, HIEGHT);
