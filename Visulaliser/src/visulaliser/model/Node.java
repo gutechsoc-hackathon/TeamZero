@@ -79,6 +79,10 @@ public class Node extends Component{
     public void setScale(float scale){
     	mScale=scale;
     }
+    
+    public float getScale() {
+    	return mScale;
+    }
 
     @Override
     public void paint(Graphics g) {
@@ -87,7 +91,6 @@ public class Node extends Component{
         int y= (int) (mY*mScale);
         g2d.drawOval(x, y, mRadius, mRadius);
     }
-    //@override
     
     public String toString(){
     	String s="";

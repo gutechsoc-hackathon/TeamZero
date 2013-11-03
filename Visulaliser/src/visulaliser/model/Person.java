@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Set;
+
+import visulaliser.model.painter.Painter;
 public class Person extends Component{
     private ID mID;
     private ID mNodeID;
@@ -21,24 +23,28 @@ public class Person extends Component{
     private int mXSpeed;
     private int mYSpeed;
     
+    private final Painter mPainter;
     
-    public Person(ArrayList<Node> nodes){
+    
+    public Person(ArrayList<Node> nodes, Painter painter){
         mID = ID.generateID();
         int nodeNo = randomGenerator.nextInt(nodes.size());
         mX =(int) ((int)  nodes.get(nodeNo).getX()  + (-20 + randomGenerator.nextInt(40))*randomGenerator.nextDouble());
         mY = (int) ((int) nodes.get(nodeNo).getY() + (-20 + randomGenerator.nextInt(40))*randomGenerator.nextDouble());
         mXSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
         mYSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
+        
+        mPainter = painter;
     }
     
-    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages, ArrayList<Node> nodes){
+    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages, ArrayList<Node> nodes, Painter painter){
         ArrayList<Person> people = new ArrayList<Person>();
         mMaxX = MaxX;
         mMaxY = MaxY;
         
         
         for(int i = 0;i < noPeople; i++){
-            Person p = new Person(nodes);
+            Person p = new Person(nodes, painter);
             people.add(p);
         }
         ArrayList<Message> lis = new ArrayList();
@@ -74,14 +80,14 @@ public class Person extends Component{
     public void setScale(float scale){
     	mScale=scale;
     }
+    
+    public float getScale() {
+    	return mScale;
+    }
+    
     @Override
     public void paint(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.red);
-
-        int x= (int) (mX*mScale);
-        int y= (int) (mY*mScale);
-        g2d.fillOval(x, y, 3, 3);
+        mPainter.paintPerson(g, this);
     }
     
     public void checkNodeMessages(Node n){
