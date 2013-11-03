@@ -4,6 +4,7 @@ package visulaliser.main;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import visulaliser.model.Message;
 import visulaliser.model.Node;
 import visulaliser.model.Person;
 import visulaliser.model.Splitter;
@@ -78,12 +79,22 @@ public class Simulator extends Component{
                 ArrayList<Person> peapJ = node.getPeople();
                 Person perJ = peapJ.get(j);
              for (int k = 0; k < node.getMessages().size(); k++){
-                 for (int l = 0; l < perJ.getMessages().size(); l++){
+                 Message mess = node.getMessages().get(k);   
+                 boolean hasMessageP = false;
                  
+                 for (int l = 0; l < perJ.getMessages().size(); l++){
+                     if (mess == perJ.getMessages().get(l)){
+                         break;                      
+                     }
+                     else if (l == perJ.getMessages().size() - 1){
+                     mPeople.mess.add(mess);
+                     }
+                        
+                     }
                  }
              }
              }
         }
         
     }
-}
+

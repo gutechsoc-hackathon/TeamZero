@@ -54,6 +54,10 @@ public class Person extends Component{
         g2d.fillOval(mX, mY, 3, 3);
     }
     
+    public void addMess(Message mess){
+    mMessages.put(mess.getID(),mess);
+    }   
+    
     public int getY(){
         return mY;
     }
