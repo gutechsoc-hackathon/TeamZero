@@ -10,7 +10,7 @@ import java.util.Set;
 import visulaliser.model.painter.Painter;
 public class Node extends Component{
     
-    private ID mNodeID;
+    public final ID mNodeID;
     private HashMap<ID, Message> mMessages;
     private int mY;
     private int mX;
@@ -73,6 +73,7 @@ public class Node extends Component{
         for (ID key : keys) {
             if(!mMessages.containsKey(key)){
                 mMessages.put(key, P.getMessages().get(key));
+                System.out.println("Node " + mNodeID.ID + " took a message");
             }
         }
     }

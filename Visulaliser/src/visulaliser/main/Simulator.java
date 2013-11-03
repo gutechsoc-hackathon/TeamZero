@@ -118,6 +118,7 @@ public class Simulator extends Component implements ComponentListener{
     		for (int u = tempPeople.size() - 1; u >= 0; u--) {
     			Person person = tempPeople.get(u);
     			if (node.contains(person)){
+                                System.out.println( "Person " + person.mID.ID + " is in node " + node.mNodeID.ID);
                                 node.checkPersonMessages(person);
                                 person.checkNodeMessages(node);
     				node.add(person);

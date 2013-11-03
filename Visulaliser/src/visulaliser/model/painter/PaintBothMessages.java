@@ -38,21 +38,19 @@ public class PaintBothMessages extends BasicPainter{
 	}
     
     public void paintNode(Graphics g, Node node) {
+        
+            Graphics2D g2d = (Graphics2D) g;
+            float scale = node.getScale();
+            int x= (int) (node.getX() * scale);
+            int y= (int) (node.getY() * scale);
+            int r = node.getRadius();
+            
             if(node.getMessages().isEmpty()){
-		Graphics2D g2d = (Graphics2D) g;
-		float scale = node.getScale();
-		int x= (int) (node.getX() * scale);
-		int y= (int) (node.getY() * scale);
-		int r = node.getRadius();
+                g2d.setColor(Color.BLACK);
 		g2d.drawOval(x, y, r, r);
             }
             else{
-                Graphics2D g2d = (Graphics2D) g;
                 g2d.setColor(Color.GREEN);
-		float scale = node.getScale();
-		int x= (int) (node.getX() * scale);
-		int y= (int) (node.getY() * scale);
-		int r = node.getRadius();
 		g2d.fillOval(x, y, r, r);
             }
 	}

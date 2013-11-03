@@ -10,7 +10,7 @@ import java.util.Set;
 
 import visulaliser.model.painter.Painter;
 public class Person extends Component{
-    private ID mID;
+    public final ID mID;
     private ID mNodeID;
     private HashMap<ID, Message> mMessages = new HashMap<ID, Message>();
     private int mX;
@@ -68,9 +68,24 @@ public class Person extends Component{
         }
         mX += mXSpeed;
         mY += mYSpeed ; 
-        
-        mXSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
-        mYSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
+        boolean XorY = randomGenerator.nextBoolean();
+        if(XorY){
+        mXSpeed = mXSpeed + randomGenerator.nextInt(3) - 2;
+            if(mXSpeed > MAXSPEED){
+            mXSpeed = MAXSPEED;
+            }
+            if(mXSpeed < - MAXSPEED){
+            mXSpeed = -MAXSPEED;
+            }
+        }
+        else{mYSpeed = mYSpeed + randomGenerator.nextInt(3) - 2;
+            if(mYSpeed > MAXSPEED){
+            mYSpeed = MAXSPEED;
+            }
+            if(mYSpeed < - MAXSPEED){
+            mYSpeed = -MAXSPEED;
+            }
+        }
     }
     
     public int getX(){
@@ -95,9 +110,10 @@ public class Person extends Component{
     for (ID key : keys) {
         if(!mMessages.containsKey(key)){
             mMessages.put(key, n.getMessages().get(key));
-            if(mMessages.get(key).getTo() == mID){
-            System.out.print("Message:" + mMessages.get(key).getID() + " recived");
-            }
+                System.out.println("Person " + mID.ID + " took new a message");
+                if(mMessages.get(key).getTo() == mID){
+                System.out.print("Message:" + mMessages.get(key).getID() + " recived");
+                }
             }
         }
         
