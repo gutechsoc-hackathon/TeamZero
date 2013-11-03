@@ -44,11 +44,11 @@ public class Simulator extends Component implements ComponentListener{
     }
 
     public boolean initialise(){
-        Splitter newSplitter=new Splitter();
+        Splitter newSplitter = new Splitter(mPainter);
         try{
-        mNodes=newSplitter.networkParse(mPath,mNodeCount);
-        mxRange=newSplitter.getXrange();
-        myRange=newSplitter.getYrange();
+	        mNodes=newSplitter.networkParse(mPath,mNodeCount);
+	        mxRange=newSplitter.getXrange();
+	        myRange=newSplitter.getYrange();
         }catch(Exception e){
         	return false;
         }

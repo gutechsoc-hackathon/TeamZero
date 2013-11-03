@@ -26,8 +26,8 @@ public class BasicPainter implements Painter {
 		float scale = node.getScale();
 		int x= (int) (node.getX() * scale);
 		int y= (int) (node.getY() * scale);
-		int r = 4;
-		g2d.drawOval(x, y, 4, 4);
+		int r = node.getRadius();
+		g2d.drawOval(x, y, r, r);
 	}
 
 }
