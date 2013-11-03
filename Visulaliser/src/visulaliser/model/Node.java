@@ -59,6 +59,14 @@ return mPeople;}
     return mMessages;
     }
     
+    public void checkPeopleMessages(Person P){
+    for(int i = 0; i < P.getMessages().size();i++){
+        
+        for(int u = 0; u < mMessages.size(); u ++){
+        }
+    }
+    }
+    
     public int getSignalQuality() {
         return mSignalQuality;
     }

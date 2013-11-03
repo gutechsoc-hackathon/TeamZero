@@ -83,7 +83,7 @@ public class Simulator extends Component implements ComponentListener{
         
     }
     
-    public void iterate(){
+    public void iterate() {
     	for (int i = 0; i < mPeople.size(); i++){
     		mPeople.get(i).changePosition();            
     	}
