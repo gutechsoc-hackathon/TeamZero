@@ -7,11 +7,13 @@ public class Message {
     private String mMessage;
     private ID mNode0;
     private ID mMessageID;
-
     public Message(ID to, ID from) {
         mToID = to;
         mFromID = from;
         mMessageID = ID.generateID();
         
+    }
+    public ID getID(){
+    return mMessageID;
     }
 }

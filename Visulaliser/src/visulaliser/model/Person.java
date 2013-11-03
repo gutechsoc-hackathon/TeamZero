@@ -9,7 +9,7 @@ import java.util.Random;
 public class Person extends Component{
     private ID mID;
     private ID mNodeID;
-    private HashMap<String, Message> mMessages;
+    private HashMap<ID, Message> mMessages;
     private int mX;
     private int mY;
     private static int mMaxX;
@@ -29,6 +29,12 @@ public class Person extends Component{
             Person p = new Person();
             lis.add(p);
         }
+        int pers1no = randomGenerator.nextInt(noPeople);
+        int pers2no = randomGenerator.nextInt(noPeople);
+        Person pers1 = lis.get(pers1no);
+        Person pers2 = lis.get(pers2no);
+        Message mess1 = new Message(pers1.mID,pers2.mID);
+        lis.get(pers1no).mMessages.put(mess1.mMessageID, mess1);
         return lis;
     }
     
