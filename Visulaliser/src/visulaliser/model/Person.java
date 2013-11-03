@@ -95,6 +95,9 @@ public class Person extends Component{
     for (ID key : keys) {
         if(!mMessages.containsKey(key)){
             mMessages.put(key, n.getMessages().get(key));
+            if(mMessages.get(key).getTo() == mID){
+            System.out.print("Message:" + mMessages.get(key).getID() + " recived");
+            }
             }
         }
         

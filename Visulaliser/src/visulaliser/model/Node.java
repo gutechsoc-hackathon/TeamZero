@@ -55,7 +55,7 @@ public class Node extends Component{
         return mName;
     }
     
-    public ArrayList getPeople(){
+    public ArrayList<Person> getPeople(){
     	return mPeople;
     }
     
@@ -82,6 +82,15 @@ public class Node extends Component{
     
     public float getScale() {
     	return mScale;
+	}
+
+
+	public int getRadius(){
+		return this.mRadius;
+	}
+
+    public void setRadius(int radius){
+    	mRadius=radius;
     }
 
     @Override
