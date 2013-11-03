@@ -9,7 +9,7 @@ import java.util.Random;
 public class Person extends Component{
     private ID mID;
     private ID mNodeID;
-    private HashMap<String, Message> mMessages;
+    private HashMap<ID, Message> mMessages;
     private int mX;
     private int mY;
     private static int mMaxX;
@@ -17,10 +17,11 @@ public class Person extends Component{
     private static Random randomGenerator = new Random();
     private float mScale=1.0f;
     public Person(){
+        mID = ID.generateID();
         changePosition();
     }
     
-    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY){
+    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages){
         ArrayList<Person> lis = new ArrayList<Person>();
         mMaxX = MaxX;
         mMaxY = MaxY;
@@ -28,6 +29,13 @@ public class Person extends Component{
             Person p = new Person();
             lis.add(p);
         }
+        int pers1no = randomGenerator.nextInt(noPeople);
+        int pers2no = randomGenerator.nextInt(noPeople);
+        for(int i = 0; i < noMessages; i++){
+        Person pers1 = lis.get(pers1no);
+        Person pers2 = lis.get(pers2no);
+        Message mess1 = new Message(pers1.mID,pers2.mID);
+        lis.get(pers1no).mMessages.put(mess1.getID(), mess1);}
         return lis;
     }
     
@@ -53,7 +61,13 @@ public class Person extends Component{
         g2d.fillOval(x, y, 3, 3);
     }
     
+    public void addMess(Message mess){
+    mMessages.put(mess.getID(),mess);
+    }   
+    
     public int getY(){
         return mY;
     }
+    public HashMap<ID, Message> getMessages(){
+    return mMessages;}
 }

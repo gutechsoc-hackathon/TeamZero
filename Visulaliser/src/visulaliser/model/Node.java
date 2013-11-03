@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Node extends Component{
     
     private ID mNodeID;
-    private HashMap<String, Message> mMessages;
+    private HashMap<ID, Message> mMessages;
     private int mY;
     private int mX;
     private String mName;
@@ -19,7 +19,7 @@ public class Node extends Component{
     private float mScale=1.0f;
 
     public Node(int x, int y, String name, int quality){
-
+        mNodeID = ID.generateID();
         mX = x;
         mY = y;
         mName = name;
@@ -51,7 +51,14 @@ public class Node extends Component{
     public String getName() {
         return mName;
     }
-
+    
+    public ArrayList getPeople(){
+return mPeople;}
+    
+    public HashMap<ID, Message> getMessages(){
+    return mMessages;
+    }
+    
     public int getSignalQuality() {
         return mSignalQuality;
     }

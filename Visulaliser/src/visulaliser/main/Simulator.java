@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.ArrayList;
+import visulaliser.model.Message;
 import visulaliser.model.Node;
 import visulaliser.model.Person;
 import visulaliser.model.Splitter;
@@ -21,18 +22,18 @@ public class Simulator extends Component implements ComponentListener{
     private int mWidth;
     private int mxRange;
     private int myRange;
-    public Simulator(String path, int iterations,int nodecount, int people){
-    	
+    
+    public Simulator(String path, int iterations,int nodecount, int people, int noMessages){
         mPath = path;
         mIterations = iterations;
         mWidth = Visulaliser.WIDTH;
         mHieght = Visulaliser.HIEGHT;
         nodes = nodecount;
-        initialise(nodes,people);
         addComponentListener(this);
+        initialise(nodes,people,noMessages);
     }
 
-    public boolean initialise(int nodecount,int people){
+    public boolean initialise(int nodecount,int people, int noMessages){
         Splitter newSplitter=new Splitter();
         try{
         mNodes=newSplitter.networkParse(mPath,nodecount);
@@ -41,7 +42,7 @@ public class Simulator extends Component implements ComponentListener{
         }catch(Exception e){
         	return false;
         }
-        mPeople = Person.personGen(people, mWidth, mHieght);
+        mPeople = Person.personGen(people, mWidth, mHieght, noMessages);
         return true;
     }
     
@@ -83,28 +84,25 @@ public class Simulator extends Component implements ComponentListener{
     }
     
     public void iterate(){
-        for (int i = 0; i < mPeople.size(); i++){
-            mPeople.get(i).changePosition();            
-        }
-        ArrayList<Person> tempPeople = mPeople;
-        for(int i = 0; i < mNodes.size();i++) {
-            Node node = mNodes.get(i);
-            node.clearPeople();
-            
-            for (int u = tempPeople.size(); u >= 0; u--) {
-                Person person = tempPeople.get(i);
-                if (node.contains(person)){
-                    node.add(person);
-                    tempPeople.remove(u);
-                }
-            }
-            
-            // do messages
-            
-            
-        }
-        
+    	for (int i = 0; i < mPeople.size(); i++){
+    		mPeople.get(i).changePosition();            
+    	}
+    	
+    	ArrayList<Person> tempPeople = mPeople;
+    	for(int i = 0; i < mNodes.size();i++) {
+    		Node node = mNodes.get(i);
+    		node.clearPeople();
+
+    		for (int u = tempPeople.size(); u >= 0; u--) {
+    			Person person = tempPeople.get(i);
+    			if (node.contains(person)){
+    				node.add(person);
+    				tempPeople.remove(u);
+    			}
+    		}
+    	}
     }
+
 
 	@Override
 	public void componentHidden(ComponentEvent arg0) {
@@ -130,3 +128,4 @@ public class Simulator extends Component implements ComponentListener{
 		
 	}
 }
+

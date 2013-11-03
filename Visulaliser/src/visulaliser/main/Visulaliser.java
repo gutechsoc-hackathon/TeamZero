@@ -9,6 +9,7 @@ public static final int HIEGHT = 400;
 public static final int NODES = 72670;
 public static final int PEOPLE = 10;
 public static final int ITERATIONS = 10;
+public static final int MESSAGES = 10;
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -21,7 +22,7 @@ public static final int ITERATIONS = 10;
 	}
 	
 	public static void CreateAndShow() {
-		Simulator sim = new Simulator("glasgowhack.csv",ITERATIONS,NODES,PEOPLE);
+		Simulator sim = new Simulator("glasgowhack.csv",ITERATIONS,NODES,PEOPLE, MESSAGES);
                 sim.setHieght(HIEGHT);
                 sim.setWidth(WIDTH);
 		JFrame frame = new JFrame("visulaliser");
