@@ -74,26 +74,7 @@ public class Simulator extends Component{
                     tempPeople.remove(u);
                 }
             }
-            
-            for (int j = 0; j < node.getPeople().size(); j++){
-                ArrayList<Person> peapJ = node.getPeople();
-                Person perJ = peapJ.get(j);
-             for (int k = 0; k < node.getMessages().size(); k++){
-                 Message mess = node.getMessages().get(k);   
-                 boolean hasMessageP = false;
-                 
-                 for (int l = 0; l < perJ.getMessages().size(); l++){
-                     if (mess == perJ.getMessages().get(l)){
-                         break;                      
-                     }
-                     else if (l == perJ.getMessages().size() - 1){
-                     mPeople.mess.add(mess);
-                     }
-                        
-                     }
-                 }
-             }
-             }
+            }
         }
         
     }
