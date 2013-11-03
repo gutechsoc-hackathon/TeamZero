@@ -74,9 +74,13 @@ public class Simulator extends Component{
                 }
             }
             
-            for (int j = 0; j < node.get(i).mPeople.size(); j++){
-             for (int k = 0; k < node.get(i).mMessage.size(); k++){
-                 for (int l = 0; l < node.get(i).mPeople.mMessage.size(); l++)
+            for (int j = 0; j < node.getPeople().size(); j++){
+                ArrayList<Person> peapJ = node.getPeople();
+                Person perJ = peapJ.get(j);
+             for (int k = 0; k < node.getMessages().size(); k++){
+                 for (int l = 0; l < perJ.getMessages().size(); l++){
+                 
+                 }
              }
              }
         }

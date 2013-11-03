@@ -57,4 +57,6 @@ public class Person extends Component{
     public int getY(){
         return mY;
     }
+    public HashMap<ID, Message> getMessages(){
+    return mMessages;}
 }

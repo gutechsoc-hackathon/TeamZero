@@ -51,7 +51,14 @@ public class Node extends Component{
     public String getName() {
         return mName;
     }
-
+    
+    public ArrayList getPeople(){
+return mPeople;}
+    
+    public HashMap<ID, Message> getMessages(){
+    return mMessages;
+    }
+    
     public int getSignalQuality() {
         return mSignalQuality;
     }
