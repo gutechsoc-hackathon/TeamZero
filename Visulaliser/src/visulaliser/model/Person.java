@@ -21,23 +21,24 @@ public class Person extends Component{
         changePosition();
     }
     
-    public static ArrayList<Person> personGen(int numberOfPeople, int MaxX,int MaxY, int messageCount){
+    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages){
         ArrayList<Person> people = new ArrayList<Person>();
         mMaxX = MaxX;
         mMaxY = MaxY;
-        for(int i = 0;i < numberOfPeople; i++){
+        for(int i = 0;i < noPeople; i++){
             Person p = new Person();
             people.add(p);
         }
-
-        int pers1no = randomGenerator.nextInt(noPeople);
-        int pers2no = randomGenerator.nextInt(noPeople);
+        ArrayList<Message> lis = new ArrayList();
         for(int i = 0; i < noMessages; i++){
-        Person pers1 = lis.get(pers1no);
-        Person pers2 = lis.get(pers2no);
-        Message mess1 = new Message(pers1.mID,pers2.mID);
-        lis.get(pers1no).mMessages.put(mess1.getID(), mess1);}
-        return lis;
+            int pers1no = randomGenerator.nextInt(people.size());
+            int pers2no = randomGenerator.nextInt(people.size());
+            Person pers1 = people.get(pers1no);
+            Person pers2 = people.get(pers2no);
+            Message mess1 = new Message(pers1.mID,pers2.mID);
+            pers1.mMessages.put(mess1.getID(), mess1);}
+        return people;
+        
     }
     
     public void changePosition(){
