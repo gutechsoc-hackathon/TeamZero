@@ -79,14 +79,20 @@ public class Node extends Component{
     public void setScale(float scale){
     	mScale=scale;
     }
+    
+    public float getScale() {
+    	return mScale;
+	}
+
+
+	public int getRadius(){
+		return this.mRadius;
+	}
+
     public void setRadius(int radius){
     	mRadius=radius;
     }
-
-    public int getRadius(){
-    	return this.mRadius;
-    }
-
+    
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -94,7 +100,6 @@ public class Node extends Component{
         int y= (int) (mY*mScale);
         g2d.drawOval(x, y, mRadius, mRadius);
     }
-    //@override
     
     public String toString(){
     	String s="";
