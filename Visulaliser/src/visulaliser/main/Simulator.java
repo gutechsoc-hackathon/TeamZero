@@ -96,10 +96,13 @@ public class Simulator extends Component implements ComponentListener{
     		for (int u = tempPeople.size(); u >= 0; u--) {
     			Person person = tempPeople.get(i);
     			if (node.contains(person)){
+                                node.checkPersonMessages(person);
+                                person.checkNodeMessages(node);
     				node.add(person);
     				tempPeople.remove(u);
     			}
     		}
+        
     	}
     }
 
