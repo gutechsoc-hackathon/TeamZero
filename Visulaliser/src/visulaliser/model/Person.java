@@ -29,9 +29,9 @@ public class Person extends Component{
             Person p = new Person();
             lis.add(p);
         }
+        for(int i = 0; i < noMessages; i++){
         int pers1no = randomGenerator.nextInt(noPeople);
         int pers2no = randomGenerator.nextInt(noPeople);
-        for(int i = 0; i < noMessages; i++){
         Person pers1 = lis.get(pers1no);
         Person pers2 = lis.get(pers2no);
         Message mess1 = new Message(pers1.mID,pers2.mID);
