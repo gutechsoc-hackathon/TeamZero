@@ -7,12 +7,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import uk.me.jstott.jcoord.LatLng;
+import uk.me.jstott.jcoord.UTMRef;
+
 public class Splitter
 {
 	//constructor
+	int xRange;
+	int yRange;
 	
 	public Splitter(){
 		
+				
 	}
     public ArrayList<Node> networkParse(String filename,int lines) //returns an arraylist of nodes from "lines" number of lines from file
     {
@@ -56,8 +62,13 @@ public class Splitter
                 int mSignalQuality;
                 
                 try{
-                longX = (int) (Double.parseDouble(tokens[6]) * 1E6);
-                latY = (int) (Double.parseDouble(tokens[7]) * 1E6);
+                double longitude = Double.parseDouble(tokens[7]);
+                double latitude = Double.parseDouble(tokens[6]);
+                
+                LatLng latLng = new LatLng(latitude, longitude);
+                UTMRef utm = latLng.toUTMRef();
+                longX = (int) utm.getEasting();
+                latY = (int) utm.getNorthing();
                 // String mNodeID=tokens[0];
                 mSignalQuality = Integer.parseInt(tokens[11]); 
                 }catch(NumberFormatException e){
@@ -86,6 +97,8 @@ public class Splitter
             	node.setX(node.getX() - min[0]);
             	node.setY(node.getY() - min[1]);
             }
+            setXrange(max[0]-min[0]);
+            setYrange(max[1]-min[1]);
             
         } 
         catch (Exception e) {
@@ -101,6 +114,20 @@ public class Splitter
             }
         }
         return mNetwork; //lost in parentheses - return might never be executed
+    }
+    public void setXrange(int range){
+    	this.xRange=range;
+    	
+    }
+    public void setYrange(int range){
+    	this.yRange=range;
+    	
+    }
+    public int getXrange(){
+    	return this.xRange;
+    }
+    public int getYrange(){
+    	return this.yRange;
     }
 	    //method overloading - lines++
         public ArrayList<Node> networkParse(String filename) //returns an arraylist of nodes, reads whole file

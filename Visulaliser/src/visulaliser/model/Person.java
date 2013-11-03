@@ -15,7 +15,7 @@ public class Person extends Component{
     private static int mMaxX;
     private static int mMaxY;
     private static Random randomGenerator = new Random();
-    
+    private float mScale=1.0f;
     public Person(){
         changePosition();
     }
@@ -39,11 +39,18 @@ public class Person extends Component{
     public int getX(){
         return mX;
     }
+    
+    public void setScale(float scale){
+    	mScale=scale;
+    }
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.red);
-        g2d.fillOval(mX, mY, 3, 3);
+
+        int x= (int) (mX*mScale);
+        int y= (int) (mY*mScale);
+        g2d.fillOval(x, y, 3, 3);
     }
     
     public int getY(){

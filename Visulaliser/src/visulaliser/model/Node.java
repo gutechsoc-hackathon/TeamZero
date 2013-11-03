@@ -16,7 +16,7 @@ public class Node extends Component{
     private int mSignalQuality;
     private ArrayList<Person> mPeople;
     private int mRadius;
-    
+    private float mScale=1.0f;
 
     public Node(int x, int y, String name, int quality){
 
@@ -24,7 +24,7 @@ public class Node extends Component{
         mY = y;
         mName = name;
         mSignalQuality = quality;
-        mRadius = 10;
+        mRadius = 4;
     }
     
     
@@ -55,11 +55,16 @@ public class Node extends Component{
     public int getSignalQuality() {
         return mSignalQuality;
     }
+    public void setScale(float scale){
+    	mScale=scale;
+    }
 
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawOval(mX, mY, mRadius, mRadius);
+        int x= (int) (mX*mScale);
+        int y= (int) (mY*mScale);
+        g2d.drawOval(x, y, mRadius, mRadius);
     }
     //@override
     
