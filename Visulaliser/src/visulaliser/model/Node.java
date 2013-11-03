@@ -55,15 +55,9 @@ public class Node extends Component{
         return mName;
     }
     
-    public ArrayList getPeople(){
-<<<<<<< HEAD
-return mPeople;}
-    public int getRadius(){
-    	return this.mRadius;
-=======
+    public ArrayList<Person> getPeople(){
     	return mPeople;
->>>>>>> f5b3cbd8d4a108f1f5e6e25fc0d1a39055845c78
-    }
+	}
     
     public HashMap<ID, Message> getMessages(){
     	return mMessages;
@@ -87,6 +81,10 @@ return mPeople;}
     }
     public void setRadius(int radius){
     	mRadius=radius;
+    }
+
+    public int getRadius(){
+    	return this.mRadius;
     }
 
     @Override
