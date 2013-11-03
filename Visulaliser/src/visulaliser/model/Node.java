@@ -25,6 +25,8 @@ public class Node extends Component{
         mName = name;
         mSignalQuality = quality;
         mRadius = 4;
+        mMessages = new HashMap<ID, Message>();
+        mPeople = new ArrayList<Person>();
     }
     
     
@@ -53,23 +55,25 @@ public class Node extends Component{
     }
     
     public ArrayList getPeople(){
-return mPeople;}
+    	return mPeople;
+    }
     
     public HashMap<ID, Message> getMessages(){
-    return mMessages;
+    	return mMessages;
     }
     
     public void checkPeopleMessages(Person P){
-    for(int i = 0; i < P.getMessages().size();i++){
-        
-        for(int u = 0; u < mMessages.size(); u ++){
-        }
-    }
+	    for(int i = 0; i < P.getMessages().size();i++){
+	        
+	        for(int u = 0; u < mMessages.size(); u ++){
+	        }
+	    }
     }
     
     public int getSignalQuality() {
         return mSignalQuality;
     }
+    
     public void setScale(float scale){
     	mScale=scale;
     }
@@ -91,8 +95,8 @@ return mPeople;}
     
     public boolean contains(Person person) {
         if (Math.pow((person.getX() - mX),2) + Math.pow((person.getY() - mY),2) <= Math.pow(mRadius, 2) ){
-        return true;
-    }
+        	return true;
+        }
         return false;
     }
     public void add(Person p){

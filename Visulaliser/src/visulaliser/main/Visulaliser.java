@@ -23,13 +23,15 @@ public static final int MESSAGES = 10;
 	
 	public static void CreateAndShow() {
 		Simulator sim = new Simulator("glasgowhack.csv",ITERATIONS,NODES,PEOPLE, MESSAGES);
-                sim.setHieght(HIEGHT);
-                sim.setWidth(WIDTH);
-		JFrame frame = new JFrame("visulaliser");
-                frame.setSize(WIDTH, HIEGHT);
+        sim.setHieght(HIEGHT);
+        sim.setWidth(WIDTH);
+        
+		JFrame frame = new JFrame("Visulaliser");
+		frame.setSize(WIDTH, HIEGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(sim);
-		frame.pack();
 		frame.setVisible(true);
+		
+		sim.run();
 	}
 }

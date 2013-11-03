@@ -52,10 +52,21 @@ public class Simulator extends Component implements ComponentListener{
     public void setWidth(int w){
     mWidth = w;
     }
+    
+    @Override
+    public void update(Graphics g) {
+    	super.update(g);
+    	System.out.println("Update");
+    }
+    
     @Override
     public void paint(Graphics g){
+    	super.paint(g);
+    	System.out.println("paint");
     	int ownWidth = getWidth();
     	int ownHeight=getHeight();
+    	
+    	g.clearRect(0, 0, ownWidth, ownHeight);
     	
     	float scale = 1.0f;
     	if(ownWidth<=ownHeight){
@@ -80,10 +91,18 @@ public class Simulator extends Component implements ComponentListener{
     }
     
     public void run(){
-        
+        for (int i = 0; i < mIterations; ++i) {
+        	iterate();
+        	try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+        }
     }
     
     public void iterate() {
+    	System.out.println("Iterating...");
     	for (int i = 0; i < mPeople.size(); i++){
     		mPeople.get(i).changePosition();            
     	}
@@ -93,14 +112,18 @@ public class Simulator extends Component implements ComponentListener{
     		Node node = mNodes.get(i);
     		node.clearPeople();
 
-    		for (int u = tempPeople.size(); u >= 0; u--) {
-    			Person person = tempPeople.get(i);
+    		for (int u = tempPeople.size() - 1; u >= 0; u--) {
+    			Person person = tempPeople.get(u);
     			if (node.contains(person)){
     				node.add(person);
     				tempPeople.remove(u);
     			}
     		}
     	}
+    	
+//    	this.invalidate();
+//    	this.repaint();
+    	paint(getGraphics());
     }
 
 
@@ -119,7 +142,6 @@ public class Simulator extends Component implements ComponentListener{
 	@Override
 	public void componentResized(ComponentEvent arg0) {
 		this.invalidate();
-		
 	}
 
 	@Override
