@@ -49,6 +49,8 @@ public class Splitter
             	//in case we try to read more lines than there are line is unreadable
             
             	line = fileReader.readLine();
+            	if (line == null)
+            		break;
             	
             	lineCounter+=1;
                 //Get all tokens available in line
