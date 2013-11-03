@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import visulaliser.model.Node;
 import visulaliser.model.Person;
 import visulaliser.model.Splitter;
-import visulaliser.model.painter.BasicPainter;
-import visulaliser.model.painter.Painter;
+import visulaliser.model.painter.*;
 
 
 public class Simulator extends Component implements ComponentListener{
@@ -27,7 +26,7 @@ public class Simulator extends Component implements ComponentListener{
     private int mxRange;
     private int myRange;
     
-    private Painter mPainter = new BasicPainter();
+    private Painter mPainter = new PaintNodeMessages();
     
     public Simulator(String path, int iterations,int nodecount, int people, int noMessages){
         mPath = path;

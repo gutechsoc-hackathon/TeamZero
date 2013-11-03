@@ -3,13 +3,10 @@ package visulaliser.model.painter;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import visulaliser.model.Node;
 import visulaliser.model.Person;
-
-public class BasicPainter implements Painter {
-
-	@Override
+public class PaintNodeMessages extends BasicPainter{
+    @Override
 	public void paintPerson(Graphics g, Person person) {
 		Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.red);
@@ -22,13 +19,22 @@ public class BasicPainter implements Painter {
 
 	@Override
 	public void paintNode(Graphics g, Node node) {
-            
+            if(node.getMessages().isEmpty()){
 		Graphics2D g2d = (Graphics2D) g;
 		float scale = node.getScale();
 		int x= (int) (node.getX() * scale);
 		int y= (int) (node.getY() * scale);
 		int r = node.getRadius();
 		g2d.drawOval(x, y, r, r);
-            
+            }
+            else{
+                Graphics2D g2d = (Graphics2D) g;
+                g2d.setColor(Color.GREEN);
+		float scale = node.getScale();
+		int x= (int) (node.getX() * scale);
+		int y= (int) (node.getY() * scale);
+		int r = node.getRadius();
+		g2d.fillOval(x, y, r, r);
+            }
 	}
 }
