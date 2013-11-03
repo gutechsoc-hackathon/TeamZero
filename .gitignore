@@ -15,3 +15,5 @@ app/.project
 app/project.properties
 app/bin/
 app/gen/
+
+Visulaliser/lib/nblibraries.properties

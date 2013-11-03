@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 public class Node extends Component{
     
     private ID mNodeID;
@@ -62,12 +63,13 @@ public class Node extends Component{
     	return mMessages;
     }
     
-    public void checkPeopleMessages(Person P){
-	    for(int i = 0; i < P.getMessages().size();i++){
-	        
-	        for(int u = 0; u < mMessages.size(); u ++){
-	        }
-	    }
+    public void checkPersonMessages(Person P){
+        Set<ID> keys = P.getMessages().keySet();
+        for (ID key : keys) {
+            if(!mMessages.containsKey(key)){
+                mMessages.put(key, P.getMessages().get(key));
+            }
+        }
     }
     
     public int getSignalQuality() {

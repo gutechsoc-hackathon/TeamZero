@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Set;
 public class Person extends Component{
     private ID mID;
     private ID mNodeID;
@@ -16,17 +17,28 @@ public class Person extends Component{
     private static int mMaxY;
     private static Random randomGenerator = new Random();
     private float mScale=1.0f;
-    public Person(){
+    private static final int MAXSPEED = 10;
+    private int mXSpeed;
+    private int mYSpeed;
+    
+    
+    public Person(ArrayList<Node> nodes){
         mID = ID.generateID();
-        changePosition();
+        int nodeNo = randomGenerator.nextInt(nodes.size());
+        mX =(int) ((int)  nodes.get(nodeNo).getX()  + (-20 + randomGenerator.nextInt(40))*randomGenerator.nextDouble());
+        mY = (int) ((int) nodes.get(nodeNo).getY() + (-20 + randomGenerator.nextInt(40))*randomGenerator.nextDouble());
+        mXSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
+        mYSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
     }
     
-    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages){
+    public static ArrayList<Person> personGen(int noPeople, int MaxX,int MaxY, int noMessages, ArrayList<Node> nodes){
         ArrayList<Person> people = new ArrayList<Person>();
         mMaxX = MaxX;
         mMaxY = MaxY;
+        
+        
         for(int i = 0;i < noPeople; i++){
-            Person p = new Person();
+            Person p = new Person(nodes);
             people.add(p);
         }
         ArrayList<Message> lis = new ArrayList();
@@ -42,8 +54,17 @@ public class Person extends Component{
     }
     
     public void changePosition(){
-        mX = randomGenerator.nextInt(mMaxX);
-        mY = randomGenerator.nextInt(mMaxY);                       
+        if (mX + mXSpeed > mMaxX || mX + mXSpeed < 0){
+            mXSpeed = - mXSpeed;
+            }
+        if (mY + mYSpeed > mMaxY || mY + mYSpeed < 0){
+            mYSpeed = - mYSpeed;
+        }
+        mX += mXSpeed;
+        mY += mYSpeed ; 
+        
+        mXSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
+        mYSpeed = randomGenerator.nextInt(2 * MAXSPEED) - 10;
     }
     
     public int getX(){
@@ -62,6 +83,16 @@ public class Person extends Component{
         int y= (int) (mY*mScale);
         g2d.fillOval(x, y, 3, 3);
     }
+    
+    public void checkNodeMessages(Node n){
+    Set<ID> keys = n.getMessages().keySet();
+    for (ID key : keys) {
+        if(!mMessages.containsKey(key)){
+            mMessages.put(key, n.getMessages().get(key));
+            }
+        }
+        
+    } 
     
     public void addMess(Message mess){
     mMessages.put(mess.getID(),mess);
