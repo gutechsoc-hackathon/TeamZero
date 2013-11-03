@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Set;
 public class Person extends Component{
     private ID mID;
     private ID mNodeID;
@@ -62,6 +63,16 @@ public class Person extends Component{
         int y= (int) (mY*mScale);
         g2d.fillOval(x, y, 3, 3);
     }
+    
+    public void checkNodeMessages(Node n){
+    Set<ID> keys = n.getMessages().keySet();
+    for (ID key : keys) {
+        if(!mMessages.containsKey(key)){
+            mMessages.put(key, n.getMessages().get(key));
+            }
+        }
+        
+    } 
     
     public void addMess(Message mess){
     mMessages.put(mess.getID(),mess);
