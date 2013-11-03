@@ -70,7 +70,7 @@ public class Person extends Component{
         mY += mYSpeed ; 
         boolean XorY = randomGenerator.nextBoolean();
         if(XorY){
-        mXSpeed = mXSpeed + randomGenerator.nextInt(3) - 2;
+        mXSpeed = mXSpeed + randomGenerator.nextInt(4) - 2;
             if(mXSpeed > MAXSPEED){
             mXSpeed = MAXSPEED;
             }
@@ -78,7 +78,7 @@ public class Person extends Component{
             mXSpeed = -MAXSPEED;
             }
         }
-        else{mYSpeed = mYSpeed + randomGenerator.nextInt(3) - 2;
+        else{mYSpeed = mYSpeed + randomGenerator.nextInt(4) - 2;
             if(mYSpeed > MAXSPEED){
             mYSpeed = MAXSPEED;
             }
